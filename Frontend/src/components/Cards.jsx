@@ -1,4 +1,4 @@
-import Payment from "./Payment";
+// import Payment from "./Payment";
 
 function Cards() {
   return (
@@ -35,7 +35,7 @@ function Cards() {
             </div>
           </div>
         </div>
-        <Payment />
+        {/* <Payment /> */}
       </div>
     </>
   );

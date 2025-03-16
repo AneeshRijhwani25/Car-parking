@@ -37,11 +37,12 @@ function Location() {
 
   const handleRadioChange = (index) => {
     setSelectedRow(index);
-    const selectedItem = parkingData[index];
-    localStorage.setItem("selectedParking", JSON.stringify(selectedItem));
+    // const selectedItem = parkingData[index];
+
   };
 
   const handleViewDetails = (item) => {
+    localStorage.setItem("selectedParking", JSON.stringify(item));
     navigate("/carparkingarea", { state: { item } });
   };
 

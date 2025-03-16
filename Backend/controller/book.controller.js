@@ -13,7 +13,7 @@ export const booking = async (req, res) => {
 
         // Hash the code
         const hashCode = await bcryptjs.hash(code, 10);
-
+        
         // Create a new booking record
         const createreg = new Book({
             carnumber: carnumber,

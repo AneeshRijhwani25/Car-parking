@@ -11,11 +11,11 @@ function Verify() {
   } = useForm();
 
   const onSubmit = async (data) => {
-        const userInfoS = {
-          carnumber: data.carnumber,
-          entrydate: data.entrydate,
-          code: data.code,
-        };
+    const userInfoS = {
+      carnumber: data.carnumber,
+      entrydate: data.entrydate,
+      code: data.code,
+    };
     await axios
       .post("http://localhost:4001/verify/verifing", userInfoS)
       .then((res) => {
@@ -38,7 +38,7 @@ function Verify() {
       });
   };
   return (
-    <div >
+    <div>
       <dialog id="my_modal_5" className="modal">
         <div className="modal-box">
           <form onSubmit={handleSubmit(onSubmit)} method="dialog">
@@ -51,60 +51,62 @@ function Verify() {
               ✕
             </Link>
             <div className="hero-content flex-col lg:flex-row-reverse">
-               <div className="card shrink-0 w-full max-w-sm bg-base-100">
+              <div className="card shrink-0 w-full max-w-sm bg-base-100">
                 <div className="mt-4 space-y-2">
-                <span>Car Number</span>
-                 <br />
-               <input
-                type="text"
-                placeholder="Enter your Car Number"
-                className="input input-bordered input-info w-full max-w-xs"
-                {...register("carnumber", { required: true })}
-              />
-              <br />
-              {errors.carnumber && (
-                <span className="text-sm text-red-500">
-                  This field is required
-                </span>
-              )}
+                  <span>Car Number</span>
+                  <br />
+                  <input
+                    type="text"
+                    placeholder="Enter your Car Number"
+                    className="input input-bordered input-info w-full max-w-xs"
+                    {...register("carnumber", { required: true })}
+                  />
+                  <br />
+                  {errors.carnumber && (
+                    <span className="text-sm text-red-500">
+                      This field is required
+                    </span>
+                  )}
+                </div>
+                <div className="mt-4 space-y-2">
+                  <span>Entry Date</span>
+                  <br />
+                  <input
+                    type="text"
+                    placeholder="YYYY-MM-DD"
+                    className="input input-bordered input-info w-full max-w-xs"
+                    {...register("entrydate", { required: true })}
+                  />
+                  <br />
+                  {errors.entrydate && (
+                    <span className="text-sm text-red-500">
+                      This field is required
+                    </span>
+                  )}
+                </div>
+                <div className="mt-4 space-y-2">
+                  <span>Token Number</span>
+                  <br />
+                  <input
+                    type="text"
+                    placeholder="Enter Token Number"
+                    className="input input-bordered input-info w-full max-w-xs"
+                    {...register("code", { required: true })}
+                  />
+                  <br />
+                  {errors.code && (
+                    <span className="text-sm text-red-500">
+                      This field is required
+                    </span>
+                  )}
+                </div>
+                <div className="form-control mt-6">
+                  <button className="input-info w-full max-w-xs btn btn-outline btn-success">
+                    Verify
+                  </button>
+                </div>
+              </div>
             </div>
-            <div className="mt-4 space-y-2">
-              <span>Entry Date</span>
-              <br />
-              <input
-                type="text"
-                placeholder="YYYY-MM-DD"
-                className="input input-bordered input-info w-full max-w-xs"
-                {...register("entrydate", { required: true })}
-              />
-              <br />
-              {errors.entrydate && (
-                <span className="text-sm text-red-500">
-                  This field is required
-                </span>
-              )}
-            </div>
-            <div className="mt-4 space-y-2">
-              <span>Token Number</span>
-              <br />
-              <input
-                type="text"
-                placeholder="Enter Token Number"
-                className="input input-bordered input-info w-full max-w-xs"
-                {...register("code", { required: true })}
-              />
-              <br />
-              {errors.code && (
-                <span className="text-sm text-red-500">
-                  This field is required
-                </span>
-              )}
-            </div>
-        <div className="form-control mt-6">
-          <button className="input-info w-full max-w-xs btn btn-outline btn-success">Verify</button>
-        </div>
-        </div>
-        </div>
           </form>
         </div>
       </dialog>

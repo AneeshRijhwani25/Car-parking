@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+// import axios from "axios";
 import { Link } from "react-router-dom";
-import toast from "react-hot-toast";
-import Payment from "./Payment";
+// import toast from "react-hot-toast";
+// import Payment from "./Payment";
+import Booking from "./Booking";
 
 function CarParkingArea() {
   const [parkingStatus, setParkingStatus] = useState([]);
-  const amount = 100;
+  // const amount = 100;
   // useEffect(() => {
   //   const fetchParkingStatus = async () => {
   //     try {
@@ -29,56 +30,7 @@ function CarParkingArea() {
 
   //   return () => clearInterval(interval); // Cleanup interval on component unmount
   // }, []);
-  const handlePayment = async () => {
-    try {
-      const res = await axios.post("http://localhost:4001/orders/order", {
-        amount,
-      });
-      // console.log("Before res");
-      console.log(res.data);
-      console.log(amount);
-      // console.log("After res");
-      handlePaymentVerify(res.data.order);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const handlePaymentVerify = async (data) => {
-    const options = {
-      key: "rzp_test_cNnJMfX0H3YkDr",
-      amount: data.amount,
-      currency: data.currency,
-      name: "Harsh",
-      description: "Test Mode",
-      order_id: data.id,
-      handler: async (response) => {
-        console.log("response", response);
-        try {
-          // console.log("Before axios");
-          const res = await axios.post("http://localhost:4001/orders/verify", {
-            razorpay_order_id: response.razorpay_order_id,
-            razorpay_payment_id: response.razorpay_payment_id,
-            razorpay_signature: response.razorpay_signature,
-          });
-          // console.log("After axios");
-
-          const verifyData = res.data;
-
-          if (verifyData.message) {
-            toast.success(verifyData.message);
-          }
-        } catch (error) {
-          console.log(error);
-        }
-      },
-      theme: {
-        color: "#5f63b8",
-      },
-    };
-    const rzp1 = new window.Razorpay(options);
-    rzp1.open();
-  };
+ 
 
   const styles = {
     app: {
@@ -145,12 +97,18 @@ function CarParkingArea() {
           <div className="pt-10 ml-10 ">
             <button
               className="input-info w-full max-w-xs btn btn-outline btn-primary"
-              onClick={handlePayment}
+              // onClick={handlePayment}
+              onClick={() =>
+                document.getElementById("my_modal_4").showModal()
+                
+               
+              }
             >
               GO NOW
             </button>
           </div>
-          <Payment />
+          <Booking  />
+          {/* <Payment /> */}
         </div>
 
         <div className="mr-10 pr-10" style={styles.videoFeed}>
